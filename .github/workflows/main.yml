@@ -19,46 +19,46 @@ jobs:
         run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
 
       - name: Download ARKK Fund Holdings CSV
-        run: curl https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_INNOVATION_ETF_ARKK_HOLDINGS.csv --create-dirs -o ARKK/raw/ARK_INNOVATION_ETF_ARKK_HOLDINGS_${{ steps.date.outputs.date }}.csv
+        run: curl https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_INNOVATION_ETF_ARKK_HOLDINGS.csv --create-dirs -o raw/ARKK/ARK_INNOVATION_ETF_ARKK_HOLDINGS_${{ steps.date.outputs.date }}.csv
 
       - name: Edit ARKK Fund Holdings CSV
-        run: sed '$d' ARKK/raw/ARK_INNOVATION_ETF_ARKK_HOLDINGS_${{ steps.date.outputs.date }}.csv | sed '$d' | sed '$d' > ARKK/ARK_INNOVATION_ETF_ARKK_HOLDINGS_${{ steps.date.outputs.date }}.csv
+        run: sed '$d' raw/ARKK/ARK_INNOVATION_ETF_ARKK_HOLDINGS_${{ steps.date.outputs.date }}.csv | sed '$d' | sed '$d' > ARKK/ARK_INNOVATION_ETF_ARKK_HOLDINGS_${{ steps.date.outputs.date }}.csv
 
       - name: Download ARKQ Fund Holdings CSV
-        run: curl "https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_AUTONOMOUS_TECHNOLOGY_&_ROBOTICS_ETF_ARKQ_HOLDINGS.csv" --create-dirs -o "ARKQ/raw/ARK_AUTONOMOUS_TECHNOLOGY_&_ROBOTICS_ETF_ARKQ_HOLDINGS_${{ steps.date.outputs.date }}.csv"
+        run: curl "https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_AUTONOMOUS_TECHNOLOGY_&_ROBOTICS_ETF_ARKQ_HOLDINGS.csv" --create-dirs -o "raw/ARKQ/ARK_AUTONOMOUS_TECHNOLOGY_&_ROBOTICS_ETF_ARKQ_HOLDINGS_${{ steps.date.outputs.date }}.csv"
 
       - name: Edit ARKQ Fund Holdings CSV
-        run: sed '$d' "ARKQ/raw/ARK_AUTONOMOUS_TECHNOLOGY_&_ROBOTICS_ETF_ARKQ_HOLDINGS_${{ steps.date.outputs.date }}.csv" | sed '$d' | sed '$d' > "ARKQ/ARK_AUTONOMOUS_TECHNOLOGY_&_ROBOTICS_ETF_ARKQ_HOLDINGS_${{ steps.date.outputs.date }}.csv"
+        run: sed '$d' "raw/ARKQ/ARK_AUTONOMOUS_TECHNOLOGY_&_ROBOTICS_ETF_ARKQ_HOLDINGS_${{ steps.date.outputs.date }}.csv" | sed '$d' | sed '$d' > "ARKQ/ARK_AUTONOMOUS_TECHNOLOGY_&_ROBOTICS_ETF_ARKQ_HOLDINGS_${{ steps.date.outputs.date }}.csv"
 
       - name: Download ARKW Fund Holdings CSV
-        run: curl https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_NEXT_GENERATION_INTERNET_ETF_ARKW_HOLDINGS.csv --create-dirs -o ARKW/raw/ARK_NEXT_GENERATION_INTERNET_ETF_ARKW_HOLDINGS_${{ steps.date.outputs.date }}.csv
+        run: curl https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_NEXT_GENERATION_INTERNET_ETF_ARKW_HOLDINGS.csv --create-dirs -o raw/ARKW/ARK_NEXT_GENERATION_INTERNET_ETF_ARKW_HOLDINGS_${{ steps.date.outputs.date }}.csv
 
       - name: Edit ARKW Fund Holdings CSV
-        run: sed '$d' ARKW/raw/ARK_NEXT_GENERATION_INTERNET_ETF_ARKW_HOLDINGS_${{ steps.date.outputs.date }}.csv | sed '$d' | sed '$d' > ARKW/ARK_NEXT_GENERATION_INTERNET_ETF_ARKW_HOLDINGS_${{ steps.date.outputs.date }}.csv
+        run: sed '$d' raw/ARKW/ARK_NEXT_GENERATION_INTERNET_ETF_ARKW_HOLDINGS_${{ steps.date.outputs.date }}.csv | sed '$d' | sed '$d' > ARKW/ARK_NEXT_GENERATION_INTERNET_ETF_ARKW_HOLDINGS_${{ steps.date.outputs.date }}.csv
 
       - name: Download ARKG Fund Holdings CSV
-        run: curl https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_GENOMIC_REVOLUTION_MULTISECTOR_ETF_ARKG_HOLDINGS.csv --create-dirs -o ARKG/raw/ARK_GENOMIC_REVOLUTION_MULTISECTOR_ETF_ARKG_HOLDINGS_${{ steps.date.outputs.date }}.csv
+        run: curl https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_GENOMIC_REVOLUTION_MULTISECTOR_ETF_ARKG_HOLDINGS.csv --create-dirs -o raw/ARKG/ARK_GENOMIC_REVOLUTION_MULTISECTOR_ETF_ARKG_HOLDINGS_${{ steps.date.outputs.date }}.csv
 
       - name: Edit ARKG Fund Holdings CSV
-        run: sed '$d' ARKG/raw/ARK_GENOMIC_REVOLUTION_MULTISECTOR_ETF_ARKG_HOLDINGS_${{ steps.date.outputs.date }}.csv | sed '$d' | sed '$d' > ARKG/ARK_GENOMIC_REVOLUTION_MULTISECTOR_ETF_ARKG_HOLDINGS_${{ steps.date.outputs.date }}.csv
+        run: sed '$d' raw/ARKG/ARK_GENOMIC_REVOLUTION_MULTISECTOR_ETF_ARKG_HOLDINGS_${{ steps.date.outputs.date }}.csv | sed '$d' | sed '$d' > ARKG/ARK_GENOMIC_REVOLUTION_MULTISECTOR_ETF_ARKG_HOLDINGS_${{ steps.date.outputs.date }}.csv
 
       - name: Download ARKF Fund Holdings CSV
-        run: curl https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_FINTECH_INNOVATION_ETF_ARKF_HOLDINGS.csv --create-dirs -o ARKF/raw/ARK_FINTECH_INNOVATION_ETF_ARKF_HOLDINGS_${{ steps.date.outputs.date }}.csv
+        run: curl https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_FINTECH_INNOVATION_ETF_ARKF_HOLDINGS.csv --create-dirs -o raw/ARKF/ARK_FINTECH_INNOVATION_ETF_ARKF_HOLDINGS_${{ steps.date.outputs.date }}.csv
 
       - name: Edit ARKF Fund Holdings CSV
-        run: sed '$d' ARKF/raw/ARK_FINTECH_INNOVATION_ETF_ARKF_HOLDINGS_${{ steps.date.outputs.date }}.csv | sed '$d' | sed '$d' > ARKF/ARK_FINTECH_INNOVATION_ETF_ARKF_HOLDINGS_${{ steps.date.outputs.date }}.csv
+        run: sed '$d' raw/ARKF/ARK_FINTECH_INNOVATION_ETF_ARKF_HOLDINGS_${{ steps.date.outputs.date }}.csv | sed '$d' | sed '$d' > ARKF/ARK_FINTECH_INNOVATION_ETF_ARKF_HOLDINGS_${{ steps.date.outputs.date }}.csv
 
       - name: Download PRNT Fund Holdings CSV
-        run: curl https://ark-funds.com/wp-content/fundsiteliterature/csv/THE_3D_PRINTING_ETF_PRNT_HOLDINGS.csv --create-dirs -o PRNT/raw/THE_3D_PRINTING_ETF_PRNT_HOLDINGS_${{ steps.date.outputs.date }}.csv
+        run: curl https://ark-funds.com/wp-content/fundsiteliterature/csv/THE_3D_PRINTING_ETF_PRNT_HOLDINGS.csv --create-dirs -o raw/PRNT/THE_3D_PRINTING_ETF_PRNT_HOLDINGS_${{ steps.date.outputs.date }}.csv
 
       - name: Edit PRNT Fund Holdings CSV
-        run: sed '$d' PRNT/raw/THE_3D_PRINTING_ETF_PRNT_HOLDINGS_${{ steps.date.outputs.date }}.csv | sed '$d' | sed '$d' > PRNT/THE_3D_PRINTING_ETF_PRNT_HOLDINGS_${{ steps.date.outputs.date }}.csv
+        run: sed '$d' raw/PRNT/THE_3D_PRINTING_ETF_PRNT_HOLDINGS_${{ steps.date.outputs.date }}.csv | sed '$d' | sed '$d' > PRNT/THE_3D_PRINTING_ETF_PRNT_HOLDINGS_${{ steps.date.outputs.date }}.csv
 
       - name: Download IZRL Fund Holdings CSV
-        run: curl https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_ISRAEL_INNOVATIVE_TECHNOLOGY_ETF_IZRL_HOLDINGS.csv --create-dirs -o IZRL/raw/ARK_ISRAEL_INNOVATIVE_TECHNOLOGY_ETF_IZRL_HOLDINGS_${{ steps.date.outputs.date }}.csv
+        run: curl https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_ISRAEL_INNOVATIVE_TECHNOLOGY_ETF_IZRL_HOLDINGS.csv --create-dirs -o raw/IZRL/ARK_ISRAEL_INNOVATIVE_TECHNOLOGY_ETF_IZRL_HOLDINGS_${{ steps.date.outputs.date }}.csv
 
       - name: Edit IZRL Fund Holdings CSV
-        run: sed '$d' IZRL/raw/ARK_ISRAEL_INNOVATIVE_TECHNOLOGY_ETF_IZRL_HOLDINGS_${{ steps.date.outputs.date }}.csv | sed '$d' | sed '$d' > IZRL/ARK_ISRAEL_INNOVATIVE_TECHNOLOGY_ETF_IZRL_HOLDINGS_${{ steps.date.outputs.date }}.csv
+        run: sed '$d' raw/IZRL/ARK_ISRAEL_INNOVATIVE_TECHNOLOGY_ETF_IZRL_HOLDINGS_${{ steps.date.outputs.date }}.csv | sed '$d' | sed '$d' > IZRL/ARK_ISRAEL_INNOVATIVE_TECHNOLOGY_ETF_IZRL_HOLDINGS_${{ steps.date.outputs.date }}.csv
 
       - name: Commit changes
         uses: EndBug/add-and-commit@v7
@@ -66,7 +66,8 @@ jobs:
           message: Add fund holdings at ${{ steps.date.outputs.date }}
           add: "*.csv"
 
-      - uses: jakejarvis/s3-sync-action@master
+      - name: Upload Fund Holdings CSV to S3
+        uses: jakejarvis/s3-sync-action@master
         with:
           args: --acl public-read --follow-symlinks
         env:
@@ -75,77 +76,4 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_S3_ENDPOINT: ${{ secrets.AWS_S3_ENDPOINT }}
           AWS_REGION: 'ap-tokyo-1'
-          SOURCE_DIR: ARKK/raw
-          DEST_DIR: ARKK/
-
-      - uses: jakejarvis/s3-sync-action@master
-        with:
-          args: --acl public-read --follow-symlinks
-        env:
-          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_S3_ENDPOINT: ${{ secrets.AWS_S3_ENDPOINT }}
-          AWS_REGION: 'ap-tokyo-1'
-          SOURCE_DIR: ARKQ/raw
-          DEST_DIR: ARKQ/
-
-      - uses: jakejarvis/s3-sync-action@master
-        with:
-          args: --acl public-read --follow-symlinks
-        env:
-          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_S3_ENDPOINT: ${{ secrets.AWS_S3_ENDPOINT }}
-          AWS_REGION: 'ap-tokyo-1'
-          SOURCE_DIR: ARKW/raw
-          DEST_DIR: ARKW/
-
-      - uses: jakejarvis/s3-sync-action@master
-        with:
-          args: --acl public-read --follow-symlinks
-        env:
-          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_S3_ENDPOINT: ${{ secrets.AWS_S3_ENDPOINT }}
-          AWS_REGION: 'ap-tokyo-1'
-          SOURCE_DIR: ARKG/raw
-          DEST_DIR: ARKG/
-
-      - uses: jakejarvis/s3-sync-action@master
-        with:
-          args: --acl public-read --follow-symlinks
-        env:
-          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_S3_ENDPOINT: ${{ secrets.AWS_S3_ENDPOINT }}
-          AWS_REGION: 'ap-tokyo-1'
-          SOURCE_DIR: ARKF/raw
-          DEST_DIR: ARKF/
-
-      - uses: jakejarvis/s3-sync-action@master
-        with:
-          args: --acl public-read --follow-symlinks
-        env:
-          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_S3_ENDPOINT: ${{ secrets.AWS_S3_ENDPOINT }}
-          AWS_REGION: 'ap-tokyo-1'
-          SOURCE_DIR: PRNT/raw
-          DEST_DIR: PRNT/
-
-      - uses: jakejarvis/s3-sync-action@master
-        with:
-          args: --acl public-read --follow-symlinks
-        env:
-          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_S3_ENDPOINT: ${{ secrets.AWS_S3_ENDPOINT }}
-          AWS_REGION: 'ap-tokyo-1'
-          SOURCE_DIR: IZRL/raw
-          DEST_DIR: IZRL/
+          SOURCE_DIR: raw/
