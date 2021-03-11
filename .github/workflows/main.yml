@@ -3,7 +3,7 @@ name: Update fund holdings
 on:
   schedule:
     # run the update daily
-    - cron: "0 0 * * *"
+    - cron: "0 0,12 * * *"
 
   workflow_dispatch:
 
