@@ -18,6 +18,10 @@ jobs:
         id: date
         run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
 
+      - name: Get current date
+        id: datetime
+        run: echo "::set-output name=datetime::$(date)"
+
       - name: Download ARKK Fund Holdings CSV
         run: curl --user-agent 'Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0' https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_INNOVATION_ETF_ARKK_HOLDINGS.csv --create-dirs -o raw/ARKK/ARK_INNOVATION_ETF_ARKK_HOLDINGS_${{ steps.date.outputs.date }}.csv
 
@@ -63,7 +67,7 @@ jobs:
       - name: Commit changes
         uses: EndBug/add-and-commit@v7
         with:
-          message: Add fund holdings at ${{ steps.date.outputs.date }}
+          message: Add fund holdings at ${{ steps.datetime.outputs.datetime }}
           add: "*.csv"
 
       - name: Upload Fund Holdings CSV to S3
