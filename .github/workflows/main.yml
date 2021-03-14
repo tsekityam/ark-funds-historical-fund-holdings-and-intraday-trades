@@ -2,7 +2,6 @@ name: Update fund holdings
 
 on:
   schedule:
-    # run the update daily
     - cron: "0 0 * * *"
 
   workflow_dispatch:
@@ -18,51 +17,64 @@ jobs:
         id: date
         run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
 
-      - name: Get current date
+      - name: Get current datetime
         id: datetime
         run: echo "::set-output name=datetime::$(date)"
 
+      - name: Set user agent
+        run: echo "user_agent='Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0'" >> $GITHUB_ENV
+
+      - name: Make working directory
+        run: mkdir -p ${{ steps.date.outputs.date }}/raw
+
       - name: Download ARKK Fund Holdings CSV
-        run: curl --user-agent 'Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0' https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_INNOVATION_ETF_ARKK_HOLDINGS.csv --create-dirs -o raw/ARKK/ARK_INNOVATION_ETF_ARKK_HOLDINGS_${{ steps.date.outputs.date }}.csv
+        run: wget -P ${{ steps.date.outputs.date }}/raw -U ${{ env.user_agent }} https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_INNOVATION_ETF_ARKK_HOLDINGS.csv
 
       - name: Edit ARKK Fund Holdings CSV
-        run: sed '$d' raw/ARKK/ARK_INNOVATION_ETF_ARKK_HOLDINGS_${{ steps.date.outputs.date }}.csv | sed '$d' | sed '$d' > ARKK/ARK_INNOVATION_ETF_ARKK_HOLDINGS_${{ steps.date.outputs.date }}.csv
+        working-directory: ${{ steps.date.outputs.date }}/raw
+        run: sed '$d' ARK_INNOVATION_ETF_ARKK_HOLDINGS.csv | sed '$d' | sed '$d' > ../ARK_INNOVATION_ETF_ARKK_HOLDINGS.csv
 
       - name: Download ARKQ Fund Holdings CSV
-        run: curl --user-agent 'Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0' "https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_AUTONOMOUS_TECHNOLOGY_&_ROBOTICS_ETF_ARKQ_HOLDINGS.csv" --create-dirs -o "raw/ARKQ/ARK_AUTONOMOUS_TECHNOLOGY_&_ROBOTICS_ETF_ARKQ_HOLDINGS_${{ steps.date.outputs.date }}.csv"
+        run: wget -P ${{ steps.date.outputs.date }}/raw -U ${{ env.user_agent }} "https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_AUTONOMOUS_TECHNOLOGY_&_ROBOTICS_ETF_ARKQ_HOLDINGS.csv"
 
       - name: Edit ARKQ Fund Holdings CSV
-        run: sed '$d' "raw/ARKQ/ARK_AUTONOMOUS_TECHNOLOGY_&_ROBOTICS_ETF_ARKQ_HOLDINGS_${{ steps.date.outputs.date }}.csv" | sed '$d' | sed '$d' > "ARKQ/ARK_AUTONOMOUS_TECHNOLOGY_&_ROBOTICS_ETF_ARKQ_HOLDINGS_${{ steps.date.outputs.date }}.csv"
+        working-directory: ${{ steps.date.outputs.date }}/raw
+        run: sed '$d' "ARK_AUTONOMOUS_TECHNOLOGY_&_ROBOTICS_ETF_ARKQ_HOLDINGS.csv" | sed '$d' | sed '$d' > "../ARK_AUTONOMOUS_TECHNOLOGY_&_ROBOTICS_ETF_ARKQ_HOLDINGS".csv
 
       - name: Download ARKW Fund Holdings CSV
-        run: curl --user-agent 'Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0' https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_NEXT_GENERATION_INTERNET_ETF_ARKW_HOLDINGS.csv --create-dirs -o raw/ARKW/ARK_NEXT_GENERATION_INTERNET_ETF_ARKW_HOLDINGS_${{ steps.date.outputs.date }}.csv
+        run: wget -P ${{ steps.date.outputs.date }}/raw -U ${{ env.user_agent }} https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_NEXT_GENERATION_INTERNET_ETF_ARKW_HOLDINGS.csv
 
       - name: Edit ARKW Fund Holdings CSV
-        run: sed '$d' raw/ARKW/ARK_NEXT_GENERATION_INTERNET_ETF_ARKW_HOLDINGS_${{ steps.date.outputs.date }}.csv | sed '$d' | sed '$d' > ARKW/ARK_NEXT_GENERATION_INTERNET_ETF_ARKW_HOLDINGS_${{ steps.date.outputs.date }}.csv
+        working-directory: ${{ steps.date.outputs.date }}/raw
+        run: sed '$d' ARK_NEXT_GENERATION_INTERNET_ETF_ARKW_HOLDINGS.csv | sed '$d' | sed '$d' > ../ARK_NEXT_GENERATION_INTERNET_ETF_ARKW_HOLDINGS.csv
 
       - name: Download ARKG Fund Holdings CSV
-        run: curl --user-agent 'Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0' https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_GENOMIC_REVOLUTION_MULTISECTOR_ETF_ARKG_HOLDINGS.csv --create-dirs -o raw/ARKG/ARK_GENOMIC_REVOLUTION_MULTISECTOR_ETF_ARKG_HOLDINGS_${{ steps.date.outputs.date }}.csv
+        run: wget -P ${{ steps.date.outputs.date }}/raw -U ${{ env.user_agent }} https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_GENOMIC_REVOLUTION_MULTISECTOR_ETF_ARKG_HOLDINGS.csv
 
       - name: Edit ARKG Fund Holdings CSV
-        run: sed '$d' raw/ARKG/ARK_GENOMIC_REVOLUTION_MULTISECTOR_ETF_ARKG_HOLDINGS_${{ steps.date.outputs.date }}.csv | sed '$d' | sed '$d' > ARKG/ARK_GENOMIC_REVOLUTION_MULTISECTOR_ETF_ARKG_HOLDINGS_${{ steps.date.outputs.date }}.csv
+        working-directory: ${{ steps.date.outputs.date }}/raw
+        run: sed '$d' ARK_GENOMIC_REVOLUTION_MULTISECTOR_ETF_ARKG_HOLDINGS.csv | sed '$d' | sed '$d' > ../ARK_GENOMIC_REVOLUTION_MULTISECTOR_ETF_ARKG_HOLDINGS.csv
 
       - name: Download ARKF Fund Holdings CSV
-        run: curl --user-agent 'Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0' https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_FINTECH_INNOVATION_ETF_ARKF_HOLDINGS.csv --create-dirs -o raw/ARKF/ARK_FINTECH_INNOVATION_ETF_ARKF_HOLDINGS_${{ steps.date.outputs.date }}.csv
+        run: wget -P ${{ steps.date.outputs.date }}/raw -U ${{ env.user_agent }} https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_FINTECH_INNOVATION_ETF_ARKF_HOLDINGS.csv
 
       - name: Edit ARKF Fund Holdings CSV
-        run: sed '$d' raw/ARKF/ARK_FINTECH_INNOVATION_ETF_ARKF_HOLDINGS_${{ steps.date.outputs.date }}.csv | sed '$d' | sed '$d' > ARKF/ARK_FINTECH_INNOVATION_ETF_ARKF_HOLDINGS_${{ steps.date.outputs.date }}.csv
+        working-directory: ${{ steps.date.outputs.date }}/raw
+        run: sed '$d' ARK_FINTECH_INNOVATION_ETF_ARKF_HOLDINGS.csv | sed '$d' | sed '$d' > ../ARK_FINTECH_INNOVATION_ETF_ARKF_HOLDINGS.csv
 
       - name: Download PRNT Fund Holdings CSV
-        run: curl --user-agent 'Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0' https://ark-funds.com/wp-content/fundsiteliterature/csv/THE_3D_PRINTING_ETF_PRNT_HOLDINGS.csv --create-dirs -o raw/PRNT/THE_3D_PRINTING_ETF_PRNT_HOLDINGS_${{ steps.date.outputs.date }}.csv
+        run: wget -P ${{ steps.date.outputs.date }}/raw -U ${{ env.user_agent }} https://ark-funds.com/wp-content/fundsiteliterature/csv/THE_3D_PRINTING_ETF_PRNT_HOLDINGS.csv
 
       - name: Edit PRNT Fund Holdings CSV
-        run: sed '$d' raw/PRNT/THE_3D_PRINTING_ETF_PRNT_HOLDINGS_${{ steps.date.outputs.date }}.csv | sed '$d' | sed '$d' > PRNT/THE_3D_PRINTING_ETF_PRNT_HOLDINGS_${{ steps.date.outputs.date }}.csv
+        working-directory: ${{ steps.date.outputs.date }}/raw
+        run: sed '$d' THE_3D_PRINTING_ETF_PRNT_HOLDINGS.csv | sed '$d' | sed '$d' > ../THE_3D_PRINTING_ETF_PRNT_HOLDINGS.csv
 
       - name: Download IZRL Fund Holdings CSV
-        run: curl --user-agent 'Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0' https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_ISRAEL_INNOVATIVE_TECHNOLOGY_ETF_IZRL_HOLDINGS.csv --create-dirs -o raw/IZRL/ARK_ISRAEL_INNOVATIVE_TECHNOLOGY_ETF_IZRL_HOLDINGS_${{ steps.date.outputs.date }}.csv
+        run: wget -P ${{ steps.date.outputs.date }}/raw -U ${{ env.user_agent }} https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_ISRAEL_INNOVATIVE_TECHNOLOGY_ETF_IZRL_HOLDINGS.csv
 
       - name: Edit IZRL Fund Holdings CSV
-        run: sed '$d' raw/IZRL/ARK_ISRAEL_INNOVATIVE_TECHNOLOGY_ETF_IZRL_HOLDINGS_${{ steps.date.outputs.date }}.csv | sed '$d' | sed '$d' > IZRL/ARK_ISRAEL_INNOVATIVE_TECHNOLOGY_ETF_IZRL_HOLDINGS_${{ steps.date.outputs.date }}.csv
+        working-directory: ${{ steps.date.outputs.date }}/raw
+        run: sed '$d' ARK_ISRAEL_INNOVATIVE_TECHNOLOGY_ETF_IZRL_HOLDINGS.csv | sed '$d' | sed '$d' > ../ARK_ISRAEL_INNOVATIVE_TECHNOLOGY_ETF_IZRL_HOLDINGS.csv
 
       - name: Commit changes
         uses: EndBug/add-and-commit@v7
