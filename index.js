@@ -51,7 +51,9 @@ pgclient.query(test, (err, res) => {
   if (err) throw err;
 
   if (res.rowCount != fileNames.length)
-    throw `Only ${res.rowCount}/${fileNames.length} tables are updated`;
+    throw new Error(
+      `Only ${res.rowCount}/${fileNames.length} tables are updated`
+    );
 
   console.log(err, res.rows); // Print the data in student table
   pgclient.end();
