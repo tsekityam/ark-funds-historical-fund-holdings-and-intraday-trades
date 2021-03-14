@@ -102,7 +102,7 @@ jobs:
         run: npm ci
 
       - name: Copy data to PostgreSQL
-        run: node client.js
+        run: node index.js
         env:
           POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
           POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
