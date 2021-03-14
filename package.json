@@ -1,0 +1,22 @@
+{
+  "name": "ark-invest-etfs-historical-holdings",
+  "version": "1.0.0",
+  "description": "### Known issue",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tsekityam/ARK-Invest-ETFs-Historical-Holdings.git"
+  },
+  "author": "Tse Kit Yam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tsekityam/ARK-Invest-ETFs-Historical-Holdings/issues"
+  },
+  "homepage": "https://github.com/tsekityam/ARK-Invest-ETFs-Historical-Holdings#readme",
+  "dependencies": {
+    "pg": "^8.5.1"
+  }
+}
