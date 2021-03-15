@@ -29,7 +29,7 @@ jobs:
 
       - name: Download ARKK Fund Holdings CSV
         working-directory: data/${{ steps.date.outputs.date }}/raw
-        run: wget -U ${{ env.user_agent }} https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_INNOVATION_ETF_ARKK_HOLDINGS.csv
+        run: wget -U ${{ env.user_agent }} https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_INNOVATION_ETF_ARKK_HOLDINGS.csv -O ARK_INNOVATION_ETF_ARKK_HOLDINGS.csv
 
       - name: Edit ARKK Fund Holdings CSV
         working-directory: data/${{ steps.date.outputs.date }}/raw
@@ -37,7 +37,7 @@ jobs:
 
       - name: Download ARKQ Fund Holdings CSV
         working-directory: data/${{ steps.date.outputs.date }}/raw
-        run: wget -U ${{ env.user_agent }} "https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_AUTONOMOUS_TECHNOLOGY_&_ROBOTICS_ETF_ARKQ_HOLDINGS.csv"
+        run: wget -U ${{ env.user_agent }} "https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_AUTONOMOUS_TECHNOLOGY_&_ROBOTICS_ETF_ARKQ_HOLDINGS.csv" -O "ARK_AUTONOMOUS_TECHNOLOGY_&_ROBOTICS_ETF_ARKQ_HOLDINGS.csv"
 
       - name: Edit ARKQ Fund Holdings CSV
         working-directory: data/${{ steps.date.outputs.date }}/raw
@@ -45,7 +45,7 @@ jobs:
 
       - name: Download ARKW Fund Holdings CSV
         working-directory: data/${{ steps.date.outputs.date }}/raw
-        run: wget -U ${{ env.user_agent }} https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_NEXT_GENERATION_INTERNET_ETF_ARKW_HOLDINGS.csv
+        run: wget -U ${{ env.user_agent }} https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_NEXT_GENERATION_INTERNET_ETF_ARKW_HOLDINGS.csv -O ARK_NEXT_GENERATION_INTERNET_ETF_ARKW_HOLDINGS.csv
 
       - name: Edit ARKW Fund Holdings CSV
         working-directory: data/${{ steps.date.outputs.date }}/raw
@@ -53,7 +53,7 @@ jobs:
 
       - name: Download ARKG Fund Holdings CSV
         working-directory: data/${{ steps.date.outputs.date }}/raw
-        run: wget -U ${{ env.user_agent }} https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_GENOMIC_REVOLUTION_MULTISECTOR_ETF_ARKG_HOLDINGS.csv
+        run: wget -U ${{ env.user_agent }} https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_GENOMIC_REVOLUTION_MULTISECTOR_ETF_ARKG_HOLDINGS.csv -O ARK_GENOMIC_REVOLUTION_MULTISECTOR_ETF_ARKG_HOLDINGS.csv
 
       - name: Edit ARKG Fund Holdings CSV
         working-directory: data/${{ steps.date.outputs.date }}/raw
@@ -61,7 +61,7 @@ jobs:
 
       - name: Download ARKF Fund Holdings CSV
         working-directory: data/${{ steps.date.outputs.date }}/raw
-        run: wget -U ${{ env.user_agent }} https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_FINTECH_INNOVATION_ETF_ARKF_HOLDINGS.csv
+        run: wget -U ${{ env.user_agent }} https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_FINTECH_INNOVATION_ETF_ARKF_HOLDINGS.csv -O ARK_FINTECH_INNOVATION_ETF_ARKF_HOLDINGS.csv
 
       - name: Edit ARKF Fund Holdings CSV
         working-directory: data/${{ steps.date.outputs.date }}/raw
@@ -69,7 +69,7 @@ jobs:
 
       - name: Download PRNT Fund Holdings CSV
         working-directory: data/${{ steps.date.outputs.date }}/raw
-        run: wget -U ${{ env.user_agent }} https://ark-funds.com/wp-content/fundsiteliterature/csv/THE_3D_PRINTING_ETF_PRNT_HOLDINGS.csv
+        run: wget -U ${{ env.user_agent }} https://ark-funds.com/wp-content/fundsiteliterature/csv/THE_3D_PRINTING_ETF_PRNT_HOLDINGS.csv -O THE_3D_PRINTING_ETF_PRNT_HOLDINGS.csv
 
       - name: Edit PRNT Fund Holdings CSV
         working-directory: data/${{ steps.date.outputs.date }}/raw
@@ -77,7 +77,7 @@ jobs:
 
       - name: Download IZRL Fund Holdings CSV
         working-directory: data/${{ steps.date.outputs.date }}/raw
-        run: wget -U ${{ env.user_agent }} https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_ISRAEL_INNOVATIVE_TECHNOLOGY_ETF_IZRL_HOLDINGS.csv
+        run: wget -U ${{ env.user_agent }} https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_ISRAEL_INNOVATIVE_TECHNOLOGY_ETF_IZRL_HOLDINGS.csv -O ARK_ISRAEL_INNOVATIVE_TECHNOLOGY_ETF_IZRL_HOLDINGS.csv
 
       - name: Edit IZRL Fund Holdings CSV
         working-directory: data/${{ steps.date.outputs.date }}/raw
