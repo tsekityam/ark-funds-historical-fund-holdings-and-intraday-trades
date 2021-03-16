@@ -8,7 +8,6 @@ on:
 
 jobs:
   etl:
-
     runs-on: ubuntu-latest
 
     steps:
