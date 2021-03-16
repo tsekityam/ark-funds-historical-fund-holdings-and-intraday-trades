@@ -2,7 +2,7 @@ name: Update fund holdings
 
 on:
   schedule:
-    - cron: "0 0 * * *"
+    - cron: 0 0,12 * * *
 
   workflow_dispatch:
 
@@ -13,102 +13,92 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Get current date
-        id: date
-        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Download ARKQ
+        run: node index.js "ARK_AUTONOMOUS_TECHNOLOGY_&_ROBOTICS_ETF_ARKQ_HOLDINGS.csv" ${{ secrets.AWS_S3_BUCKET }}
+        continue-on-error: true
+        env:
+          POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_DATABASE: ${{ secrets.POSTGRES_DATABASE }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      - name: ARKF
+        run: node index.js "ARK_FINTECH_INNOVATION_ETF_ARKF_HOLDINGS.csv" ${{ secrets.AWS_S3_BUCKET }}
+        continue-on-error: true
+        env:
+          POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_DATABASE: ${{ secrets.POSTGRES_DATABASE }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      - name: ARKG
+        run: node index.js "ARK_GENOMIC_REVOLUTION_MULTISECTOR_ETF_ARKG_HOLDINGS.csv" ${{ secrets.AWS_S3_BUCKET }}
+        continue-on-error: true
+        env:
+          POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_DATABASE: ${{ secrets.POSTGRES_DATABASE }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      - name: ARKK
+        run: node index.js "ARK_INNOVATION_ETF_ARKK_HOLDINGS.csv" ${{ secrets.AWS_S3_BUCKET }}
+        continue-on-error: true
+        env:
+          POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_DATABASE: ${{ secrets.POSTGRES_DATABASE }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      - name: IZRL
+        run: node index.js "ARK_ISRAEL_INNOVATIVE_TECHNOLOGY_ETF_IZRL_HOLDINGS.csv" ${{ secrets.AWS_S3_BUCKET }}
+        continue-on-error: true
+        env:
+          POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_DATABASE: ${{ secrets.POSTGRES_DATABASE }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      - name: ARKW
+        run: node index.js "ARK_NEXT_GENERATION_INTERNET_ETF_ARKW_HOLDINGS.csv" ${{ secrets.AWS_S3_BUCKET }}
+        continue-on-error: true
+        env:
+          POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_DATABASE: ${{ secrets.POSTGRES_DATABASE }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      - name: PRNT
+        run: node index.js "THE_3D_PRINTING_ETF_PRNT_HOLDINGS.csv" ${{ secrets.AWS_S3_BUCKET }}
+        continue-on-error: true
+        env:
+          POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_DATABASE: ${{ secrets.POSTGRES_DATABASE }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
       - name: Get current datetime
         id: datetime
         run: echo "::set-output name=datetime::$(date)"
-
-      - name: Set user agent
-        run: echo "user_agent='Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0'" >> $GITHUB_ENV
-
-      - name: Make working directory
-        run: mkdir -p data/${{ steps.date.outputs.date }}/raw
-
-      - name: Download ARKK Fund Holdings CSV
-        working-directory: data/${{ steps.date.outputs.date }}/raw
-        run: wget -U ${{ env.user_agent }} https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_INNOVATION_ETF_ARKK_HOLDINGS.csv -O ARK_INNOVATION_ETF_ARKK_HOLDINGS.csv
-
-      - name: Edit ARKK Fund Holdings CSV
-        working-directory: data/${{ steps.date.outputs.date }}/raw
-        run: sed '$d' ARK_INNOVATION_ETF_ARKK_HOLDINGS.csv | sed '$d' | sed '$d' > ../ARK_INNOVATION_ETF_ARKK_HOLDINGS.csv
-
-      - name: Download ARKQ Fund Holdings CSV
-        working-directory: data/${{ steps.date.outputs.date }}/raw
-        run: wget -U ${{ env.user_agent }} "https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_AUTONOMOUS_TECHNOLOGY_&_ROBOTICS_ETF_ARKQ_HOLDINGS.csv" -O "ARK_AUTONOMOUS_TECHNOLOGY_&_ROBOTICS_ETF_ARKQ_HOLDINGS.csv"
-
-      - name: Edit ARKQ Fund Holdings CSV
-        working-directory: data/${{ steps.date.outputs.date }}/raw
-        run: sed '$d' "ARK_AUTONOMOUS_TECHNOLOGY_&_ROBOTICS_ETF_ARKQ_HOLDINGS.csv" | sed '$d' | sed '$d' > "../ARK_AUTONOMOUS_TECHNOLOGY_&_ROBOTICS_ETF_ARKQ_HOLDINGS".csv
-
-      - name: Download ARKW Fund Holdings CSV
-        working-directory: data/${{ steps.date.outputs.date }}/raw
-        run: wget -U ${{ env.user_agent }} https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_NEXT_GENERATION_INTERNET_ETF_ARKW_HOLDINGS.csv -O ARK_NEXT_GENERATION_INTERNET_ETF_ARKW_HOLDINGS.csv
-
-      - name: Edit ARKW Fund Holdings CSV
-        working-directory: data/${{ steps.date.outputs.date }}/raw
-        run: sed '$d' ARK_NEXT_GENERATION_INTERNET_ETF_ARKW_HOLDINGS.csv | sed '$d' | sed '$d' > ../ARK_NEXT_GENERATION_INTERNET_ETF_ARKW_HOLDINGS.csv
-
-      - name: Download ARKG Fund Holdings CSV
-        working-directory: data/${{ steps.date.outputs.date }}/raw
-        run: wget -U ${{ env.user_agent }} https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_GENOMIC_REVOLUTION_MULTISECTOR_ETF_ARKG_HOLDINGS.csv -O ARK_GENOMIC_REVOLUTION_MULTISECTOR_ETF_ARKG_HOLDINGS.csv
-
-      - name: Edit ARKG Fund Holdings CSV
-        working-directory: data/${{ steps.date.outputs.date }}/raw
-        run: sed '$d' ARK_GENOMIC_REVOLUTION_MULTISECTOR_ETF_ARKG_HOLDINGS.csv | sed '$d' | sed '$d' > ../ARK_GENOMIC_REVOLUTION_MULTISECTOR_ETF_ARKG_HOLDINGS.csv
-
-      - name: Download ARKF Fund Holdings CSV
-        working-directory: data/${{ steps.date.outputs.date }}/raw
-        run: wget -U ${{ env.user_agent }} https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_FINTECH_INNOVATION_ETF_ARKF_HOLDINGS.csv -O ARK_FINTECH_INNOVATION_ETF_ARKF_HOLDINGS.csv
-
-      - name: Edit ARKF Fund Holdings CSV
-        working-directory: data/${{ steps.date.outputs.date }}/raw
-        run: sed '$d' ARK_FINTECH_INNOVATION_ETF_ARKF_HOLDINGS.csv | sed '$d' | sed '$d' > ../ARK_FINTECH_INNOVATION_ETF_ARKF_HOLDINGS.csv
-
-      - name: Download PRNT Fund Holdings CSV
-        working-directory: data/${{ steps.date.outputs.date }}/raw
-        run: wget -U ${{ env.user_agent }} https://ark-funds.com/wp-content/fundsiteliterature/csv/THE_3D_PRINTING_ETF_PRNT_HOLDINGS.csv -O THE_3D_PRINTING_ETF_PRNT_HOLDINGS.csv
-
-      - name: Edit PRNT Fund Holdings CSV
-        working-directory: data/${{ steps.date.outputs.date }}/raw
-        run: sed '$d' THE_3D_PRINTING_ETF_PRNT_HOLDINGS.csv | sed '$d' | sed '$d' > ../THE_3D_PRINTING_ETF_PRNT_HOLDINGS.csv
-
-      - name: Download IZRL Fund Holdings CSV
-        working-directory: data/${{ steps.date.outputs.date }}/raw
-        run: wget -U ${{ env.user_agent }} https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_ISRAEL_INNOVATIVE_TECHNOLOGY_ETF_IZRL_HOLDINGS.csv -O ARK_ISRAEL_INNOVATIVE_TECHNOLOGY_ETF_IZRL_HOLDINGS.csv
-
-      - name: Edit IZRL Fund Holdings CSV
-        working-directory: data/${{ steps.date.outputs.date }}/raw
-        run: sed '$d' ARK_ISRAEL_INNOVATIVE_TECHNOLOGY_ETF_IZRL_HOLDINGS.csv | sed '$d' | sed '$d' > ../ARK_ISRAEL_INNOVATIVE_TECHNOLOGY_ETF_IZRL_HOLDINGS.csv
 
       - name: Commit changes
         uses: EndBug/add-and-commit@v7
         with:
           message: Add fund holdings at ${{ steps.datetime.outputs.datetime }}
           add: "*.csv"
-
-      - name: Upload Fund Holdings CSV to S3
-        uses: jakejarvis/s3-sync-action@master
-        env:
-          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: us-east-1
-          SOURCE_DIR: data/${{ steps.date.outputs.date }}
-          DEST_DIR: ${{ steps.date.outputs.date }}
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Copy data to PostgreSQL
-        run: node index.js
-        env:
-          POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
-          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
-          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-          POSTGRES_DATABASE: ${{ secrets.POSTGRES_DATABASE }}
-          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
