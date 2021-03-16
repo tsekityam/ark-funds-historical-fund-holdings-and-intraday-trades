@@ -10,10 +10,7 @@
       "name": "Launch Program",
       "skipFiles": ["<node_internals>/**"],
       "program": "${workspaceFolder}/index.js",
-      "args": [
-        "ARK_ISRAEL_INNOVATIVE_TECHNOLOGY_ETF_IZRL_HOLDINGS.csv",
-        "ark-invest-etfs-historical-holdings"
-      ],
+      "args": ["ARK_ISRAEL_INNOVATIVE_TECHNOLOGY_ETF_IZRL_HOLDINGS.csv"],
       "envFile": "${workspaceFolder}/.env"
     }
   ]

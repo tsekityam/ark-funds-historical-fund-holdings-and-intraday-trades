@@ -7,10 +7,9 @@ const path = require("path");
 const { Client } = require("pg");
 
 /*
-usage: node download.js {filename} {bucket}
+usage: node download.js {filename}
 */
 const fileName = process.argv[2];
-const bucket = process.argv[3];
 
 downloadFile(fileName);
 
@@ -110,7 +109,7 @@ function uploadToS3(srcPath, dstPath) {
   s3 = new AWS.S3({ apiVersion: "2006-03-01" });
 
   // call S3 to retrieve upload file to specified bucket
-  const uploadParams = { Bucket: bucket, Key: "", Body: "" };
+  const uploadParams = { Bucket: process.env.AWS_S3_BUCKET, Key: "", Body: "" };
   const file = srcPath;
 
   // Configure the file stream and obtain the upload parameters
@@ -148,7 +147,7 @@ function copyToPostgres(location) {
           'fund_holdings',
           'date,fund,company,ticker,cusip,shares,market_value,weight',
           '(format csv, header true)',
-          '${bucket}',
+          '${process.env.AWS_S3_BUCKET}',
           '${location}',
           'us-east-1',
           '${process.env.AWS_ACCESS_KEY_ID}',
