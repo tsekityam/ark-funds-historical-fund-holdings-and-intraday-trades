@@ -7,7 +7,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  etl:
+
     runs-on: ubuntu-latest
 
     steps:
@@ -16,7 +17,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Download ARKQ
+      - name: ARKQ
         run: node index.js "ARK_AUTONOMOUS_TECHNOLOGY_&_ROBOTICS_ETF_ARKQ_HOLDINGS.csv" ${{ secrets.AWS_S3_BUCKET }}
         env:
           POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
