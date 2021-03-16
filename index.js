@@ -50,7 +50,9 @@ function relocateFile(srcDir, fileName) {
   var date;
   fs.createReadStream(`${srcDir}/${fileName}`)
     .pipe(csv.parse({ headers: true, maxRows: 1 }))
-    .on("error", (error) => console.error(error))
+    .on("error", (err) => {
+      throw err;
+    })
     .on("data", (row) => {
       if (isNaN(new Date(row.date))) {
         throw new Error(`${row.date} is an invalid date`);
@@ -83,7 +85,9 @@ function processFile(srcDir, dstDir, fileName) {
 
   fs.createReadStream(`${srcDir}/${fileName}`)
     .pipe(csv.parse({ headers: true, ignoreEmpty: true }))
-    .on("error", (error) => console.error(error))
+    .on("error", (err) => {
+      throw err;
+    })
     .on("data", (row) => {
       if (!isNaN(new Date(row.date))) {
         csvStream.write(row);
@@ -112,7 +116,7 @@ function uploadToS3(srcPath, dstPath) {
   // Configure the file stream and obtain the upload parameters
   const fileStream = fs.createReadStream(file);
   fileStream.on("error", function (err) {
-    console.log("File Error", err);
+    throw err;
   });
   uploadParams.Body = fileStream;
   uploadParams.Key = dstPath;
@@ -120,7 +124,7 @@ function uploadToS3(srcPath, dstPath) {
   // call S3 to retrieve upload file to specified bucket
   s3.upload(uploadParams, function (err, data) {
     if (err) {
-      console.log("Error", err);
+      throw err;
     }
     if (data) {
       console.log(`Uploaded ${data.key} to S3`);
@@ -154,7 +158,13 @@ function copyToPostgres(location) {
 
   pgclient.query(copy, (err, res) => {
     pgclient.end();
-    if (err) throw new Error(err.detail);
+    if (err) {
+      if (err.code === "23505") {
+        console.log(err.detail);
+      } else {
+        throw err;
+      }
+    }
 
     console.log(`${location} uploaded to Postgres`);
   });
