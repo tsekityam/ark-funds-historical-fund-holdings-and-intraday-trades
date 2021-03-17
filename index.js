@@ -38,9 +38,8 @@ function downloadFile(fileName) {
     const file = fs.createWriteStream(`tmp/${fileName}`);
     response.pipe(file).on("finish", () => {
       console.log(`${fileName} is downloaded to tmp/${fileName}`);
+      relocateFile("tmp", fileName);
     });
-
-    relocateFile("tmp", fileName);
   });
 }
 
@@ -53,7 +52,7 @@ function relocateFile(srcDir, fileName) {
       throw err;
     })
     .on("data", (row) => {
-      if (isNaN(new Date(row.date))) {
+      if (isNaN(new Date(row.date).getTime())) {
         throw new Error(`${row.date} is an invalid date`);
       }
       date = dateFormat(new Date(row.date), "yyyy-mm-dd");
