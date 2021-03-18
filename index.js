@@ -137,6 +137,10 @@ function copyToPostgres(location) {
     user: process.env.POSTGRES_USER,
     password: process.env.POSTGRES_PASSWORD,
     database: process.env.POSTGRES_DATABASE,
+    ssl: {
+      rejectUnauthorized: true,
+      ca: fs.readFileSync("rds-combined-ca-bundle.pem").toString(),
+    },
   });
 
   pgclient.connect();
