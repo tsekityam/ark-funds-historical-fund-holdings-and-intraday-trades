@@ -133,10 +133,6 @@ function uploadToS3(srcPath, dstPath) {
 
 function copyToPostgres(location) {
   const pgclient = new Client({
-    host: process.env.POSTGRES_HOST,
-    user: process.env.POSTGRES_USER,
-    password: process.env.POSTGRES_PASSWORD,
-    database: process.env.POSTGRES_DATABASE,
     ssl: {
       rejectUnauthorized: true,
       ca: fs.readFileSync("rds-combined-ca-bundle.pem").toString(),
