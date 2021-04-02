@@ -113,27 +113,27 @@ jobs:
 
       - name: Download ARKK Intraday Trades
         continue-on-error: true
-        run: wget -P tmp/${{ steps.date.outputs.date }} -U ${{ env.user_agent }} https://ark-funds.com/auto/trades/ARK_ARKK_Trades.xls
+        run: wget -P data/tmp/${{ steps.date.outputs.date }} -U ${{ env.user_agent }} https://ark-funds.com/auto/trades/ARK_ARKK_Trades.xls
 
       - name: Download ARKQ Intraday Trades
         continue-on-error: true
-        run: wget -P tmp/${{ steps.date.outputs.date }} -U ${{ env.user_agent }} https://ark-funds.com/auto/trades/ARK_ARKQ_Trades.xls
+        run: wget -P data/tmp/${{ steps.date.outputs.date }} -U ${{ env.user_agent }} https://ark-funds.com/auto/trades/ARK_ARKQ_Trades.xls
 
       - name: Download ARKW Intraday Trades
         continue-on-error: true
-        run: wget -P tmp/${{ steps.date.outputs.date }} -U ${{ env.user_agent }} https://ark-funds.com/auto/trades/ARK_ARKW_Trades.xls
+        run: wget -P data/tmp/${{ steps.date.outputs.date }} -U ${{ env.user_agent }} https://ark-funds.com/auto/trades/ARK_ARKW_Trades.xls
 
       - name: Download ARKG Intraday Trades
         continue-on-error: true
-        run: wget -P tmp/${{ steps.date.outputs.date }} -U ${{ env.user_agent }} https://ark-funds.com/auto/trades/ARK_ARKG_Trades.xls
+        run: wget -P data/tmp/${{ steps.date.outputs.date }} -U ${{ env.user_agent }} https://ark-funds.com/auto/trades/ARK_ARKG_Trades.xls
 
       - name: Download ARKF Intraday Trades
         continue-on-error: true
-        run: wget -P tmp/${{ steps.date.outputs.date }} -U ${{ env.user_agent }} https://ark-funds.com/auto/trades/ARK_ARKF_Trades.xls
+        run: wget -P data/tmp/${{ steps.date.outputs.date }} -U ${{ env.user_agent }} https://ark-funds.com/auto/trades/ARK_ARKF_Trades.xls
 
       - name: Download ARKX Intraday Trades
         continue-on-error: true
-        run: wget -P tmp/${{ steps.date.outputs.date }} -U ${{ env.user_agent }} https://ark-funds.com/auto/trades/ARK_ARKX_Trades.xls
+        run: wget -P data/tmp/${{ steps.date.outputs.date }} -U ${{ env.user_agent }} https://ark-funds.com/auto/trades/ARK_ARKX_Trades.xls
 
       - name: Get current datetime
         id: datetime
@@ -143,4 +143,4 @@ jobs:
         uses: EndBug/add-and-commit@v7
         with:
           message: Add fund holdings at ${{ steps.datetime.outputs.datetime }}
-          add: '[".csv", ".xls"]'
+          add: '["*.csv", "*.xls"]'
