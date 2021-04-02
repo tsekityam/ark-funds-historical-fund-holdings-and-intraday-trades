@@ -103,6 +103,31 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+      
+      - name: Set user agent
+        run: echo "user_agent='Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0'" >> $GITHUB_ENV
+
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date)"
+
+      - name: Download ARKK Intraday Trades
+        run: wget -P tmp/${{ steps.date.outputs.date }} -U ${{ env.user_agent }} https://ark-funds.com/auto/trades/ARK_ARKK_Trades.xls
+
+      - name: Download ARKQ Intraday Trades
+        run: wget -P tmp/${{ steps.date.outputs.date }} -U ${{ env.user_agent }} https://ark-funds.com/auto/trades/ARK_ARKQ_Trades.xls
+
+      - name: Download ARKW Intraday Trades
+        run: wget -P tmp/${{ steps.date.outputs.date }} -U ${{ env.user_agent }} https://ark-funds.com/auto/trades/ARK_ARKW_Trades.xls
+
+      - name: Download ARKG Intraday Trades
+        run: wget -P tmp/${{ steps.date.outputs.date }} -U ${{ env.user_agent }} https://ark-funds.com/auto/trades/ARK_ARKG_Trades.xls
+
+      - name: Download ARKF Intraday Trades
+        run: wget -P tmp/${{ steps.date.outputs.date }} -U ${{ env.user_agent }} https://ark-funds.com/auto/trades/ARK_ARKF_Trades.xls
+
+      - name: Download ARKX Intraday Trades
+        run: wget -P tmp/${{ steps.date.outputs.date }} -U ${{ env.user_agent }} https://ark-funds.com/auto/trades/ARK_ARKX_Trades.xls
 
       - name: Get current datetime
         id: datetime
@@ -112,4 +137,4 @@ jobs:
         uses: EndBug/add-and-commit@v7
         with:
           message: Add fund holdings at ${{ steps.datetime.outputs.datetime }}
-          add: "*.csv"
+          add: '[".csv", ".xls"]'
