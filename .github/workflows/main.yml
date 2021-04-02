@@ -112,21 +112,27 @@ jobs:
         run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
 
       - name: Download ARKK Intraday Trades
+        continue-on-error: true
         run: wget -P tmp/${{ steps.date.outputs.date }} -U ${{ env.user_agent }} https://ark-funds.com/auto/trades/ARK_ARKK_Trades.xls
 
       - name: Download ARKQ Intraday Trades
+        continue-on-error: true
         run: wget -P tmp/${{ steps.date.outputs.date }} -U ${{ env.user_agent }} https://ark-funds.com/auto/trades/ARK_ARKQ_Trades.xls
 
       - name: Download ARKW Intraday Trades
+        continue-on-error: true
         run: wget -P tmp/${{ steps.date.outputs.date }} -U ${{ env.user_agent }} https://ark-funds.com/auto/trades/ARK_ARKW_Trades.xls
 
       - name: Download ARKG Intraday Trades
+        continue-on-error: true
         run: wget -P tmp/${{ steps.date.outputs.date }} -U ${{ env.user_agent }} https://ark-funds.com/auto/trades/ARK_ARKG_Trades.xls
 
       - name: Download ARKF Intraday Trades
+        continue-on-error: true
         run: wget -P tmp/${{ steps.date.outputs.date }} -U ${{ env.user_agent }} https://ark-funds.com/auto/trades/ARK_ARKF_Trades.xls
 
       - name: Download ARKX Intraday Trades
+        continue-on-error: true
         run: wget -P tmp/${{ steps.date.outputs.date }} -U ${{ env.user_agent }} https://ark-funds.com/auto/trades/ARK_ARKX_Trades.xls
 
       - name: Get current datetime
