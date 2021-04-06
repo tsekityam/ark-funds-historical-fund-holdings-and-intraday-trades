@@ -36,7 +36,7 @@ function downloadFile(fileName) {
 
   https.get(options, function (response) {
     if (response.statusCode === 302) {
-      console.log(`No intraday information of ${fileName}`);
+      console.log(`No intraday trades of ${fileName}`);
       exit();
     }
 

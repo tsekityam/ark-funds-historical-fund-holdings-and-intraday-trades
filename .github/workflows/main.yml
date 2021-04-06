@@ -16,7 +16,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Download ARKK fund holdings
+      - name: Download ARKK Fund Holdings
         run: node fund-holdings.js "ARK_INNOVATION_ETF_ARKK_HOLDINGS.csv"
         env:
           PGHOST: ${{ secrets.POSTGRES_HOST }}
@@ -27,7 +27,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
 
-      - name: Download ARKQ fund holdings
+      - name: Download ARKQ Fund Holdings
         run: node fund-holdings.js "ARK_AUTONOMOUS_TECHNOLOGY_&_ROBOTICS_ETF_ARKQ_HOLDINGS.csv"
         env:
           PGHOST: ${{ secrets.POSTGRES_HOST }}
@@ -38,7 +38,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
 
-      - name: Download ARKW fund holdings
+      - name: Download ARKW Fund Holdings
         run: node fund-holdings.js "ARK_NEXT_GENERATION_INTERNET_ETF_ARKW_HOLDINGS.csv"
         env:
           PGHOST: ${{ secrets.POSTGRES_HOST }}
@@ -49,7 +49,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
 
-      - name: Download ARKG fund holdings
+      - name: Download ARKG Fund Holdings
         run: node fund-holdings.js "ARK_GENOMIC_REVOLUTION_MULTISECTOR_ETF_ARKG_HOLDINGS.csv"
         env:
           PGHOST: ${{ secrets.POSTGRES_HOST }}
@@ -60,7 +60,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
 
-      - name: Download ARKF fund holdings
+      - name: Download ARKF Fund Holdings
         run: node fund-holdings.js "ARK_FINTECH_INNOVATION_ETF_ARKF_HOLDINGS.csv"
         env:
           PGHOST: ${{ secrets.POSTGRES_HOST }}
@@ -71,7 +71,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
 
-      - name: Download ARKX fund holdings
+      - name: Download ARKX Fund Holdings
         run: node fund-holdings.js "ARK_SPACE_EXPLORATION_&_INNOVATION_ETF_ARKX_HOLDINGS.csv"
         env:
           PGHOST: ${{ secrets.POSTGRES_HOST }}
@@ -82,7 +82,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
 
-      - name: Download PRNT fund holdings
+      - name: Download PRNT Fund Holdings
         run: node fund-holdings.js "THE_3D_PRINTING_ETF_PRNT_HOLDINGS.csv"
         env:
           PGHOST: ${{ secrets.POSTGRES_HOST }}
@@ -93,7 +93,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
 
-      - name: Download IZRL fund holdings
+      - name: Download IZRL Fund Holdings
         run: node fund-holdings.js "ARK_ISRAEL_INNOVATIVE_TECHNOLOGY_ETF_IZRL_HOLDINGS.csv"
         env:
           PGHOST: ${{ secrets.POSTGRES_HOST }}
