@@ -7,13 +7,13 @@ const path = require("path");
 const { Client } = require("pg");
 
 /*
-usage: node download.js {filename}
+usage: node fund-holdings.js {filename}
 */
 const fileName = process.argv[2];
 
 downloadFile(fileName);
 
-// download file from ark-invest.com to ./tmp/
+// download file from ark-funds.com to ./tmp/
 function downloadFile(fileName) {
   const options = {
     hostname: "ark-funds.com",

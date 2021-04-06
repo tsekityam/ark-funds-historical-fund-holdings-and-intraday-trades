@@ -7,10 +7,19 @@
     {
       "type": "pwa-node",
       "request": "launch",
-      "name": "Launch Program",
+      "name": "Download fund holdings",
       "skipFiles": ["<node_internals>/**"],
-      "program": "${workspaceFolder}/index.js",
+      "program": "${workspaceFolder}/fund-holdings.js",
       "args": ["ARK_ISRAEL_INNOVATIVE_TECHNOLOGY_ETF_IZRL_HOLDINGS.csv"],
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "type": "pwa-node",
+      "request": "launch",
+      "name": "Download intraday trades",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}/intraday-trades.js",
+      "args": ["ARK_ARKX_Trades.xls"],
       "envFile": "${workspaceFolder}/.env"
     }
   ]
