@@ -1,4 +1,4 @@
-name: Update fund holdings
+name: Update data
 
 on:
   schedule:
