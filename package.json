@@ -17,13 +17,10 @@
   },
   "homepage": "https://github.com/tsekityam/ARK-Invest-ETFs-Historical-Holdings#readme",
   "dependencies": {
-    "aws-sdk": "^2.864.0",
+    "aws-sdk": "^2.948.0",
     "dateformat": "^4.5.1",
     "fast-csv": "^4.3.6",
-    "pg": "^8.5.1",
+    "pg": "^8.6.0",
     "xlsx": "^0.16.9"
-  },
-  "devDependencies": {
-    "dotenv": "^8.2.0"
   }
 }
