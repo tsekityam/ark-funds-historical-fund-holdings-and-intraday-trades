@@ -8,6 +8,8 @@ const path = require("path");
 const { Client } = require("pg");
 const { exit } = require("process");
 
+require('dotenv').config()
+
 /*
 usage: node intraday-trades.js {filename}
 */

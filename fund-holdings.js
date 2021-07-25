@@ -6,6 +6,8 @@ const AWS = require("aws-sdk");
 const path = require("path");
 const { Client } = require("pg");
 
+require('dotenv').config()
+
 /*
 usage: node fund-holdings.js {filename}
 */

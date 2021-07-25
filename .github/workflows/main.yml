@@ -16,12 +16,13 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
+          cache: 'yarn'
 
       - name: Install dependencies
-        run: npm ci
+        run: yarn install
 
       - name: Download ARKK Fund Holdings
-        run: node fund-holdings.js "ARK_INNOVATION_ETF_ARKK_HOLDINGS.csv"
+        run: yarn fund-holdings "ARK_INNOVATION_ETF_ARKK_HOLDINGS.csv"
         env:
           PGHOST: ${{ secrets.PGHOST }}
           PGUSER: ${{ secrets.PGUSER }}
@@ -32,7 +33,7 @@ jobs:
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
 
       - name: Download ARKQ Fund Holdings
-        run: node fund-holdings.js "ARK_AUTONOMOUS_TECHNOLOGY_&_ROBOTICS_ETF_ARKQ_HOLDINGS.csv"
+        run: yarn fund-holdings "ARK_AUTONOMOUS_TECHNOLOGY_&_ROBOTICS_ETF_ARKQ_HOLDINGS.csv"
         env:
           PGHOST: ${{ secrets.PGHOST }}
           PGUSER: ${{ secrets.PGUSER }}
@@ -43,7 +44,7 @@ jobs:
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
 
       - name: Download ARKW Fund Holdings
-        run: node fund-holdings.js "ARK_NEXT_GENERATION_INTERNET_ETF_ARKW_HOLDINGS.csv"
+        run: yarn fund-holdings "ARK_NEXT_GENERATION_INTERNET_ETF_ARKW_HOLDINGS.csv"
         env:
           PGHOST: ${{ secrets.PGHOST }}
           PGUSER: ${{ secrets.PGUSER }}
@@ -54,7 +55,7 @@ jobs:
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
 
       - name: Download ARKG Fund Holdings
-        run: node fund-holdings.js "ARK_GENOMIC_REVOLUTION_MULTISECTOR_ETF_ARKG_HOLDINGS.csv"
+        run: yarn fund-holdings "ARK_GENOMIC_REVOLUTION_MULTISECTOR_ETF_ARKG_HOLDINGS.csv"
         env:
           PGHOST: ${{ secrets.PGHOST }}
           PGUSER: ${{ secrets.PGUSER }}
@@ -65,7 +66,7 @@ jobs:
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
 
       - name: Download ARKF Fund Holdings
-        run: node fund-holdings.js "ARK_FINTECH_INNOVATION_ETF_ARKF_HOLDINGS.csv"
+        run: yarn fund-holdings "ARK_FINTECH_INNOVATION_ETF_ARKF_HOLDINGS.csv"
         env:
           PGHOST: ${{ secrets.PGHOST }}
           PGUSER: ${{ secrets.PGUSER }}
@@ -76,7 +77,7 @@ jobs:
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
 
       - name: Download ARKX Fund Holdings
-        run: node fund-holdings.js "ARK_SPACE_EXPLORATION_&_INNOVATION_ETF_ARKX_HOLDINGS.csv"
+        run: yarn fund-holdings "ARK_SPACE_EXPLORATION_&_INNOVATION_ETF_ARKX_HOLDINGS.csv"
         env:
           PGHOST: ${{ secrets.PGHOST }}
           PGUSER: ${{ secrets.PGUSER }}
@@ -87,7 +88,7 @@ jobs:
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
 
       - name: Download PRNT Fund Holdings
-        run: node fund-holdings.js "THE_3D_PRINTING_ETF_PRNT_HOLDINGS.csv"
+        run: yarn fund-holdings "THE_3D_PRINTING_ETF_PRNT_HOLDINGS.csv"
         env:
           PGHOST: ${{ secrets.PGHOST }}
           PGUSER: ${{ secrets.PGUSER }}
@@ -98,7 +99,7 @@ jobs:
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
 
       - name: Download IZRL Fund Holdings
-        run: node fund-holdings.js "ARK_ISRAEL_INNOVATIVE_TECHNOLOGY_ETF_IZRL_HOLDINGS.csv"
+        run: yarn fund-holdings "ARK_ISRAEL_INNOVATIVE_TECHNOLOGY_ETF_IZRL_HOLDINGS.csv"
         env:
           PGHOST: ${{ secrets.PGHOST }}
           PGUSER: ${{ secrets.PGUSER }}
@@ -109,7 +110,7 @@ jobs:
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
       
       - name: Download ARKK Intraday Trades
-        run: node intraday-trades.js "ARK_ARKK_Trades.xls"
+        run: yarn intraday-trades "ARK_ARKK_Trades.xls"
         env:
           PGHOST: ${{ secrets.PGHOST }}
           PGUSER: ${{ secrets.PGUSER }}
@@ -120,7 +121,7 @@ jobs:
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
 
       - name: Download ARKQ Intraday Trades
-        run: node intraday-trades.js "ARK_ARKQ_Trades.xls"
+        run: yarn intraday-trades "ARK_ARKQ_Trades.xls"
         env:
           PGHOST: ${{ secrets.PGHOST }}
           PGUSER: ${{ secrets.PGUSER }}
@@ -131,7 +132,7 @@ jobs:
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
 
       - name: Download ARKW Intraday Trades
-        run: node intraday-trades.js "ARK_ARKW_Trades.xls"
+        run: yarn intraday-trades "ARK_ARKW_Trades.xls"
         env:
           PGHOST: ${{ secrets.PGHOST }}
           PGUSER: ${{ secrets.PGUSER }}
@@ -142,7 +143,7 @@ jobs:
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
 
       - name: Download ARKG Intraday Trades
-        run: node intraday-trades.js "ARK_ARKG_Trades.xls"
+        run: yarn intraday-trades "ARK_ARKG_Trades.xls"
         env:
           PGHOST: ${{ secrets.PGHOST }}
           PGUSER: ${{ secrets.PGUSER }}
@@ -153,7 +154,7 @@ jobs:
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
 
       - name: Download ARKF Intraday Trades
-        run: node intraday-trades.js "ARK_ARKF_Trades.xls"
+        run: yarn intraday-trades "ARK_ARKF_Trades.xls"
         env:
           PGHOST: ${{ secrets.PGHOST }}
           PGUSER: ${{ secrets.PGUSER }}
@@ -164,7 +165,7 @@ jobs:
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
 
       - name: Download ARKX Intraday Trades
-        run: node intraday-trades.js "ARK_ARKX_Trades.xls"
+        run: yarn intraday-trades "ARK_ARKX_Trades.xls"
         env:
           PGHOST: ${{ secrets.PGHOST }}
           PGUSER: ${{ secrets.PGUSER }}
