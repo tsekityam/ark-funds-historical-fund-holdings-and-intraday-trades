@@ -7,19 +7,19 @@
     {
       "type": "pwa-node",
       "request": "launch",
-      "name": "Download fund holdings",
+      "name": "Download fund holdings with https",
       "skipFiles": ["<node_internals>/**"],
       "program": "${workspaceFolder}/fund-holdings.js",
-      "args": ["ARK_ISRAEL_INNOVATIVE_TECHNOLOGY_ETF_IZRL_HOLDINGS.csv"],
+      "args": ["--https", "https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_INNOVATION_ETF_ARKK_HOLDINGS.csv"],
       "envFile": "${workspaceFolder}/.env"
     },
     {
       "type": "pwa-node",
       "request": "launch",
-      "name": "Download intraday trades",
+      "name": "Download intraday trades with https",
       "skipFiles": ["<node_internals>/**"],
       "program": "${workspaceFolder}/intraday-trades.js",
-      "args": ["ARK_ARKX_Trades.xls"],
+      "args": ["--https", "https://ark-funds.com/auto/trades/ARK_ARKK_Trades.xls"],
       "envFile": "${workspaceFolder}/.env"
     }
   ]
