@@ -31,46 +31,46 @@ jobs:
         run: yarn install
 
       - name: Download ARKK Fund Holdings
-        run: yarn fund-holdings "ARK_INNOVATION_ETF_ARKK_HOLDINGS.csv"
+        run: yarn fund-holdings --https "https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_INNOVATION_ETF_ARKK_HOLDINGS.csv"
 
       - name: Download ARKQ Fund Holdings
-        run: yarn fund-holdings "ARK_AUTONOMOUS_TECHNOLOGY_&_ROBOTICS_ETF_ARKQ_HOLDINGS.csv"
+        run: yarn fund-holdings --https "https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_AUTONOMOUS_TECHNOLOGY_&_ROBOTICS_ETF_ARKQ_HOLDINGS.csv"
 
       - name: Download ARKW Fund Holdings
-        run: yarn fund-holdings "ARK_NEXT_GENERATION_INTERNET_ETF_ARKW_HOLDINGS.csv"
+        run: yarn fund-holdings --https "https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_NEXT_GENERATION_INTERNET_ETF_ARKW_HOLDINGS.csv"
 
       - name: Download ARKG Fund Holdings
-        run: yarn fund-holdings "ARK_GENOMIC_REVOLUTION_MULTISECTOR_ETF_ARKG_HOLDINGS.csv"
+        run: yarn fund-holdings --https "https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_GENOMIC_REVOLUTION_MULTISECTOR_ETF_ARKG_HOLDINGS.csv"
 
       - name: Download ARKF Fund Holdings
-        run: yarn fund-holdings "ARK_FINTECH_INNOVATION_ETF_ARKF_HOLDINGS.csv"
+        run: yarn fund-holdings --https "https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_FINTECH_INNOVATION_ETF_ARKF_HOLDINGS.csv"
 
       - name: Download ARKX Fund Holdings
-        run: yarn fund-holdings "ARK_SPACE_EXPLORATION_&_INNOVATION_ETF_ARKX_HOLDINGS.csv"
+        run: yarn fund-holdings --https "https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_SPACE_EXPLORATION_&_INNOVATION_ETF_ARKX_HOLDINGS.csv"
 
       - name: Download PRNT Fund Holdings
-        run: yarn fund-holdings "THE_3D_PRINTING_ETF_PRNT_HOLDINGS.csv"
+        run: yarn fund-holdings --https "https://ark-funds.com/wp-content/fundsiteliterature/csv/THE_3D_PRINTING_ETF_PRNT_HOLDINGS.csv"
 
       - name: Download IZRL Fund Holdings
-        run: yarn fund-holdings "ARK_ISRAEL_INNOVATIVE_TECHNOLOGY_ETF_IZRL_HOLDINGS.csv"
+        run: yarn fund-holdings --https "https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_ISRAEL_INNOVATIVE_TECHNOLOGY_ETF_IZRL_HOLDINGS.csv"
 
       - name: Download ARKK Intraday Trades
-        run: yarn intraday-trades "ARK_ARKK_Trades.xls"
+        run: yarn intraday-trades --https "https://ark-funds.com/auto/trades/ARK_ARKK_Trades.xls"
 
       - name: Download ARKQ Intraday Trades
-        run: yarn intraday-trades "ARK_ARKQ_Trades.xls"
+        run: yarn intraday-trades --https "https://ark-funds.com/auto/trades/ARK_ARKQ_Trades.xls"
 
       - name: Download ARKW Intraday Trades
-        run: yarn intraday-trades "ARK_ARKW_Trades.xls"
+        run: yarn intraday-trades --https "https://ark-funds.com/auto/trades/ARK_ARKW_Trades.xls"
 
       - name: Download ARKG Intraday Trades
-        run: yarn intraday-trades "ARK_ARKG_Trades.xls"
+        run: yarn intraday-trades --https "https://ark-funds.com/auto/trades/ARK_ARKG_Trades.xls"
 
       - name: Download ARKF Intraday Trades
-        run: yarn intraday-trades "ARK_ARKF_Trades.xls"
+        run: yarn intraday-trades --https "https://ark-funds.com/auto/trades/ARK_ARKF_Trades.xls"
 
       - name: Download ARKX Intraday Trades
-        run: yarn intraday-trades "ARK_ARKX_Trades.xls"
+        run: yarn intraday-trades --https "https://ark-funds.com/auto/trades/ARK_ARKX_Trades.xls"
 
       - name: Get current datetime
         id: datetime

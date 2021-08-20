@@ -8,22 +8,22 @@ const path = require("path");
 const { Client } = require("pg");
 const { exit } = require("process");
 
-require('dotenv').config()
+require("dotenv").config();
+const argv = require("yargs/yargs")(process.argv.slice(2)).argv;
 
 /*
-usage: node intraday-trades.js {filename}
+usage: node intraday-trades.js --https ${HTTPS_URL}
 */
-const fileName = process.argv[2];
+if (argv.https) {
+  downloadFile(argv.https);
+} else if (argv.file) {
+  copyFile(argv.file);
+}
 
-downloadFile(fileName);
-
-// download file from ark-funds.com to ./tmp/
-function downloadFile(fileName) {
+// download file from url to ./tmp/
+function downloadFile(url) {
   const options = {
-    hostname: "ark-funds.com",
-    path: `/auto/trades/${fileName}`,
     headers: {
-      Host: "ark-funds.com",
       "User-Agent":
         "Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0",
       Accept:
@@ -36,7 +36,9 @@ function downloadFile(fileName) {
     },
   };
 
-  https.get(options, function (response) {
+  https.get(url, options, function (response) {
+    const fileName = path.parse(url).base;
+
     if (response.statusCode === 302) {
       console.log(`No intraday trades of ${fileName}`);
       exit();
@@ -49,6 +51,16 @@ function downloadFile(fileName) {
       console.log(`${fileName} is downloaded to tmp/${fileName}`);
       convertToCSV("tmp", fileName);
     });
+  });
+}
+
+// copy file from url to ./tmp/
+function copyFile(url) {
+  const fileName = path.parse(url).base;
+
+  fs.copyFile(url, `tmp/${fileName}`, () => {
+    console.log(`${fileName} is copied to tmp/${fileName}`);
+    convertToCSV("tmp", fileName);
   });
 }
 
@@ -70,7 +82,7 @@ function convertToCSV(srcDir, fileName) {
     function (err) {
       if (err) throw err;
       console.log(`${srcDir}/${fileName} is converted to CSV`);
-      relocateFile(srcDir, `${path.basename(basename, extname)}`);
+      relocateFile(srcDir, fileName);
     }
   );
 }
@@ -79,7 +91,7 @@ function convertToCSV(srcDir, fileName) {
 function relocateFile(srcDir, fileName) {
   var date;
 
-  fs.createReadStream(`${srcDir}/${fileName}.csv`)
+  fs.createReadStream(`${srcDir}/${path.parse(fileName).name}.csv`)
     .pipe(csv.parse({ headers: true, maxRows: 1, ignoreEmpty: true }))
     .on("error", (err) => {
       throw err;
@@ -92,22 +104,22 @@ function relocateFile(srcDir, fileName) {
       date = dateFormat(new Date(row.Date), "yyyy-mm-dd");
     })
     .on("end", () => {
-      console.log(`${srcDir}/${fileName}.xls contains ${date} data`);
+      console.log(`${srcDir}/${fileName} contains ${date} data`);
 
-      _relocateFile(srcDir, `data/${date}/raw`, fileName, "xls");
-      _relocateFile(srcDir, `data/${date}`, fileName, "csv");
+      _relocateFile(srcDir, `data/${date}/raw`, fileName);
+      _relocateFile(srcDir, `data/${date}`, `${path.parse(fileName).name}.csv`);
 
       uploadToS3(
-        `data/${date}/${fileName}.csv`,
-        path.relative(`./data`, path.resolve(`data/${date}/${fileName}.csv`))
+        `data/${date}/${path.parse(fileName).name}.csv`,
+        path.relative(`./data`, path.resolve(`data/${date}/${path.parse(fileName).name}.csv`))
       );
     });
 }
 
-function _relocateFile(srcDir, dstDir, fileName, extension) {
+function _relocateFile(srcDir, dstDir, fileName) {
   fs.rename(
-    `${srcDir}/${fileName}.${extension}`,
-    `${dstDir}/${fileName}.${extension}`,
+    `${srcDir}/${fileName}`,
+    `${dstDir}/${fileName}`,
     (err) => {
       if (err) throw err;
       console.log(`${srcDir}/${fileName} is moved to ${dstDir}/${fileName}`);

@@ -6,22 +6,23 @@ const AWS = require("aws-sdk");
 const path = require("path");
 const { Client } = require("pg");
 
-require('dotenv').config()
+require("dotenv").config();
+const argv = require("yargs/yargs")(process.argv.slice(2)).argv;
 
 /*
-usage: node fund-holdings.js {filename}
+usage: node fund-holdings.js --https ${HTTPS_URL}
 */
-const fileName = process.argv[2];
 
-downloadFile(fileName);
+if (argv.https) {
+  downloadFile(argv.https);
+}
 
-// download file from ark-funds.com to ./tmp/
-function downloadFile(fileName) {
+// download file from url to ./tmp/
+function downloadFile(url) {
+  const fileName = path.parse(url).base;
+
   const options = {
-    hostname: "ark-funds.com",
-    path: `/wp-content/fundsiteliterature/csv/${fileName}`,
     headers: {
-      Host: "ark-funds.com",
       "User-Agent":
         "Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0",
       Accept:
@@ -34,7 +35,7 @@ function downloadFile(fileName) {
     },
   };
 
-  https.get(options, function (response) {
+  https.get(url, options, function (response) {
     !fs.existsSync(`tmp`) && fs.mkdirSync(`tmp`);
 
     const file = fs.createWriteStream(`tmp/${fileName}`);
