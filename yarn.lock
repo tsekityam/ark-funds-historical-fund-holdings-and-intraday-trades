@@ -52,10 +52,10 @@ ansi-styles@^4.0.0:
   dependencies:
     color-convert "^2.0.1"
 
-aws-sdk@^2.977.0:
-  version "2.977.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.977.0.tgz#14533cd1ba2611bd60becf4498e7eadcc8483b0a"
-  integrity sha512-LU0ityBR3w28Ewwr+V0xu4KyQr8i4C1ypafmBNttYm3FHVUDDPQ/hLHASnGq1zGp6rBxBxO1ZE6meFqpKXIaug==
+aws-sdk@^2.988.0:
+  version "2.988.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.988.0.tgz#46538de14c4c5cd3d7718badedffd31471a0c0e9"
+  integrity sha512-2b56fPJ9vHgLnDeZ6NDgQzzJT/0NbSGNYIzGZx47/FROwoxRArqt9agiQ14y1zlXPsP9QNKPjp6HsW4IFLjGWQ==
   dependencies:
     buffer "4.9.2"
     events "1.1.1"
