@@ -5,6 +5,7 @@ var dayjs = require('dayjs')
 const AWS = require("aws-sdk");
 const path = require("path");
 const { Client } = require("pg");
+const currency = require("currency.js");
 
 require("dotenv").config();
 const argv = require("yargs/yargs")(process.argv.slice(2)).argv;
@@ -84,6 +85,8 @@ function processFile(srcDir, dstDir, fileName) {
 
   csvStream.pipe(ws);
 
+  const weightRegexp = "([0-9]+[.][0-9]{2})";
+
   fs.createReadStream(`${srcDir}/${fileName}`)
     .pipe(csv.parse({ headers: true, ignoreEmpty: true }))
     .on("error", (err) => {
@@ -91,7 +94,19 @@ function processFile(srcDir, dstDir, fileName) {
     })
     .on("data", (row) => {
       if (!isNaN(new Date(row.date))) {
-        csvStream.write(row);
+        const processed = {
+          date: row.date,
+          fund: row.fund,
+          company: row.company,
+          ticker: row.ticker,
+          cusip: row.cusip,
+          "market value($)": currency(row["market value ($)"], {
+            separator: "",
+            pattern: "#",
+          }).format(),
+          "weight(%)": row["weight (%)"].match(weightRegexp)[1],
+        };
+        csvStream.write(processed);
       }
     })
     .on("end", () => {
