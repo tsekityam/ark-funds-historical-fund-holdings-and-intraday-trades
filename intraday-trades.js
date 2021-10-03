@@ -2,7 +2,7 @@ const https = require("https");
 const fs = require("fs");
 const csv = require("fast-csv");
 var XLSX = require("xlsx");
-const dateFormat = require("dateformat");
+var dayjs = require('dayjs')
 const AWS = require("aws-sdk");
 const path = require("path");
 const { Client } = require("pg");
@@ -39,7 +39,7 @@ function downloadFile(url) {
   https.get(url, options, function (response) {
     const fileName = path.parse(url).base;
 
-    if (response.statusCode === 302) {
+    if (response.statusCode === 404) {
       console.log(`No intraday trades of ${fileName}`);
       exit();
     }
@@ -101,7 +101,7 @@ function relocateFile(srcDir, fileName) {
       if (isNaN(new Date(row.Date).getTime())) {
         throw new Error(`${row.Date} is an invalid date`);
       }
-      date = dateFormat(new Date(row.Date), "yyyy-mm-dd");
+      date = dayjs(row.date).format("YYYY-MM-DD");
     })
     .on("end", () => {
       console.log(`${srcDir}/${fileName} contains ${date} data`);
