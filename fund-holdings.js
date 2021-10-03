@@ -100,7 +100,6 @@ function processFile(srcDir, dstDir, fileName) {
           company: row.company,
           ticker: row.ticker,
           cusip: row.cusip,
-          shares: row.share,
           "market value($)": currency(row["market value ($)"], {
             separator: "",
             pattern: "#",
