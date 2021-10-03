@@ -161,7 +161,7 @@ function copyToPostgres(location) {
 
   const copy = `
         SELECT aws_s3.table_import_from_s3(
-          'fund_holdings_v2',
+          'fund_holdings',
           'date,fund,company,ticker,cusip,market_value,weight',
           '(format csv, header true)',
           '${process.env.AWS_S3_BUCKET}',
