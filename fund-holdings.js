@@ -1,7 +1,7 @@
 const https = require("https");
 const fs = require("fs");
 const csv = require("fast-csv");
-const dateFormat = require("dateformat");
+var dayjs = require('dayjs')
 const AWS = require("aws-sdk");
 const path = require("path");
 const { Client } = require("pg");
@@ -58,7 +58,7 @@ function relocateFile(srcDir, fileName) {
       if (isNaN(new Date(row.date).getTime())) {
         throw new Error(`${row.date} is an invalid date`);
       }
-      date = dateFormat(new Date(row.date), "yyyy-mm-dd");
+      date = dayjs(row.date).format("YYYY-MM-DD");
     })
     .on("end", () => {
       console.log(`${srcDir}/${fileName} contains ${date} data`);
