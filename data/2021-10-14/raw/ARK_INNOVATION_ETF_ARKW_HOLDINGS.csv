@@ -1,0 +1,45 @@
+date,fund,company,ticker,cusip,shares,"market value ($)","weight (%)"
+10/14/2021,ARKW,"TESLA INC",TSLA,88160R101,"625,121","$507,023,140.68",9.82%
+10/14/2021,ARKW,"GRAYSCALE BITCOIN TRUST BTC",GBTC,389637109,"7,939,476","$354,497,603.40",6.87%
+10/14/2021,ARKW,"TWITTER INC",TWTR,90184L102,"4,565,515","$283,975,033.00",5.50%
+10/14/2021,ARKW,"COINBASE GLOBAL INC -CLASS A",COIN,19260Q107,"1,121,448","$276,750,937.44",5.36%
+10/14/2021,ARKW,"TELADOC HEALTH INC",TDOC,87918A105,"1,978,732","$269,147,126.64",5.21%
+10/14/2021,ARKW,"ROKU INC",ROKU,77543R102,"722,127","$237,738,650.94",4.61%
+10/14/2021,ARKW,"UNITY SOFTWARE INC",U,91332U101,"1,672,069","$230,344,225.44",4.46%
+10/14/2021,ARKW,"SQUARE INC - A",SQ,852234103,"859,121","$208,534,440.33",4.04%
+10/14/2021,ARKW,"SHOPIFY INC - CLASS A",SHOP,82509L107,"143,326","$200,508,774.22",3.89%
+10/14/2021,ARKW,"SPOTIFY TECHNOLOGY SA",SPOT,L8681T102,"818,352","$199,538,768.16",3.87%
+10/14/2021,ARKW,"TWILIO INC - A",TWLO,90138F102,"541,151","$187,108,369.76",3.63%
+10/14/2021,ARKW,"ZOOM VIDEO COMMUNICATIONS-A",ZM,98980L101,"704,256","$187,501,117.44",3.63%
+10/14/2021,ARKW,"DRAFTKINGS INC - CL A",DKNG,26142R104,"3,581,361","$178,423,405.02",3.46%
+10/14/2021,ARKW,"PELOTON INTERACTIVE INC-A",PTON,70614W100,"1,694,017","$146,888,214.07",2.85%
+10/14/2021,ARKW,"PALANTIR TECHNOLOGIES INC-A",PLTR,69608A108,"5,228,874","$126,172,729.62",2.44%
+10/14/2021,ARKW,"ZILLOW GROUP INC - C",Z,98954M200,"1,326,860","$125,295,389.80",2.43%
+10/14/2021,ARKW,"UIPATH INC - CLASS A",PATH,90364P105,"2,442,362","$122,093,676.38",2.37%
+10/14/2021,ARKW,"ROBLOX CORP -CLASS A",RBLX,771049103,"1,274,544","$95,310,400.32",1.85%
+10/14/2021,ARKW,"SPLUNK INC",SPLK,848637104,"554,346","$89,576,770.14",1.74%
+10/14/2021,ARKW,"ETSY INC",ETSY,29786A106,"355,013","$75,884,028.75",1.47%
+10/14/2021,ARKW,"CLOUDFLARE INC - CLASS A",NET,18915M107,"458,836","$73,152,223.48",1.42%
+10/14/2021,ARKW,"ROBINHOOD MARKETS INC - A",HOOD,770700102,"1,700,581","$68,907,542.12",1.34%
+10/14/2021,ARKW,"PAGERDUTY INC",PD,69553P100,"1,654,697","$68,256,251.25",1.32%
+10/14/2021,ARKW,"WALT DISNEY CO/THE",DIS,254687106,"387,291","$66,985,851.36",1.30%
+10/14/2021,ARKW,"SEA LTD-ADR",SE,81141R100,"171,804","$60,019,727.40",1.16%
+10/14/2021,ARKW,"GENIUS SPORTS LTD",GENI,G3934V109,"3,384,242","$59,359,604.68",1.15%
+10/14/2021,ARKW,"LIVEPERSON INC",LPSN,538146101,"934,306","$54,619,528.76",1.06%
+10/14/2021,ARKW,"OKTA INC",OKTA,679295105,"221,657","$54,793,610.40",1.06%
+10/14/2021,ARKW,"DOCUSIGN INC",DOCU,256163106,"206,745","$53,611,045.95",1.04%
+10/14/2021,ARKW,"SKILLZ INC",SKLZ,83067L109,"5,946,981","$53,047,070.52",1.03%
+10/14/2021,ARKW,"VUZIX CORP",VUZI,92921W300,"5,138,957","$51,595,128.28",1.00%
+10/14/2021,ARKW,"FARFETCH LTD-CLASS A",FTCH,30744W107,"1,392,443","$51,130,506.96",0.99%
+10/14/2021,ARKW,"VERACYTE INC",VCYT,92337F107,"1,130,389","$49,567,557.65",0.96%
+10/14/2021,ARKW,"KHOSLA VENTURES ACQUISITIO-A",KVSB,482505104,"4,665,056","$46,650,560.00",0.90%
+10/14/2021,ARKW,"ADYEN NV-UNSPON ADR",ADYEY,00783V104,"1,548,664","$45,205,502.16",0.88%
+10/14/2021,ARKW,"2U INC",TWOU,90214J101,"1,322,518","$44,542,406.24",0.86%
+10/14/2021,ARKW,"MERCADOLIBRE INC",MELI,58733R102,"27,856","$42,297,386.08",0.82%
+10/14/2021,ARKW,"NANO DIMENSION LTD - ADR",NNDM,63008G203,"6,634,385","$37,683,306.80",0.73%
+10/14/2021,ARKW,"SNAP INC - A",SNAP,83304A106,"473,505","$35,489,199.75",0.69%
+10/14/2021,ARKW,"CONCORD ACQUISITION CORP -A",CND,206071102,"2,812,399","$28,264,609.95",0.55%
+10/14/2021,ARKW,"PAYPAL HOLDINGS INC",PYPL,70450Y103,"41,428","$10,620,482.08",0.21%
+10/14/2021,ARKW,"DREYFUS GOVT CASH MAN INS",,X9USDDGCM,"2,915,802","$2,915,802.42",0.06%
+10/14/2021,ARKW,"SNOWFLAKE INC-CLASS A",SNOW,833445109,98,"$32,129.30",0.00%
+"The principal risks of investing in ARK ETFs include equity, market, management and non-diversification risks, as well as fluctuations in market value and net asset value ('NAV'). Investors should carefully consider the investment objectives and risks as well as charges and expenses of an ETF before investing. This and other information are contained in each ETF's prospectus, which may be obtained by contacting the ETF's transfer agent The Bank of New York Mellon or by clicking here. Please read the prospectus carefully before you invest. The market price of ETF shares may differ significantly from their NAV during periods of market volatility. ETF shares may only be redeemed directly with the ETF at NAV by Authorized Participants, in very large creation units. Holdings are subject to change without notice and are not a recommendation to buy or sell any security. There can be no guarantee that an active trading market for ETF shares will develop or be maintained, or that their listing will continue or remain unchanged. Buying or selling ETF shares on an exchange may require the payment of brokerage commissions and frequent trading may incur brokerage costs that detract significantly from investment returns. Copyright 2021, ARK Investment Management LLC. All content is original and has been researched and produced by ARK Investment Management LLC unless otherwise stated. No part of this content may be reproduced in any form, or referred to in any other publication, without the express written permission of ARK Investment Management LLC. All statements made regarding companies, securities or other financial information on this site or any sites or articles relating to ARK Investment Management LLC are strictly beliefs and points of view held by ARK Investment Management and are subject to change without notice. Information contained herein has been obtained from sources believed to be reliable, but not guaranteed. This material has been distributed for informational purposes only and should not be considered as investment advice or a recommendation of any particular security, strategy or investment product."
