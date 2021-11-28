@@ -2,7 +2,7 @@ name: Update data
 
 on:
   schedule:
-    - cron: 0 0,3,12 * * *
+    - cron: 0 0,12 * * *
 
   workflow_dispatch:
 
@@ -53,24 +53,6 @@ jobs:
 
       - name: Download IZRL Fund Holdings
         run: yarn fund-holdings --https "https://ark-funds.com/wp-content/uploads/funds-etf-csv/ARK_INNOVATION_ETF_IZRL_HOLDINGS.csv"
-
-      - name: Download ARKK Intraday Trades
-        run: yarn intraday-trades --https "https://ark-funds.com/auto/trades/ARK_ARKK_Trades.xls"
-
-      - name: Download ARKQ Intraday Trades
-        run: yarn intraday-trades --https "https://ark-funds.com/auto/trades/ARK_ARKQ_Trades.xls"
-
-      - name: Download ARKW Intraday Trades
-        run: yarn intraday-trades --https "https://ark-funds.com/auto/trades/ARK_ARKW_Trades.xls"
-
-      - name: Download ARKG Intraday Trades
-        run: yarn intraday-trades --https "https://ark-funds.com/auto/trades/ARK_ARKG_Trades.xls"
-
-      - name: Download ARKF Intraday Trades
-        run: yarn intraday-trades --https "https://ark-funds.com/auto/trades/ARK_ARKF_Trades.xls"
-
-      - name: Download ARKX Intraday Trades
-        run: yarn intraday-trades --https "https://ark-funds.com/auto/trades/ARK_ARKX_Trades.xls"
 
       - name: Get current datetime
         id: datetime

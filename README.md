@@ -1,3 +1,5 @@
+> The intraday trade data is no longer available on https://ark-funds.com/. No new intraday trade data was collected, since 4 Oct 2021.
+
 # ark-funds-historical-fund-holdings-and-intraday-trades
 
 This repository contains historical fund holdings and intraday trades of ARK funds. It collects the data from https://ark-funds.com/ three times a day, at UTC 00:00, UTC 03:00 and UTC 12:00.
